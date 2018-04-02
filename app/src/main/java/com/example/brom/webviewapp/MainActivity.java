@@ -15,8 +15,6 @@ import android.webkit.WebViewClient;
 public class MainActivity extends AppCompatActivity {
     // Create a private member variable that can hold our WebView
 
-    int variabel;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         /* This code is run when the App is created. Include code that creates your WebView */
@@ -26,14 +24,13 @@ public class MainActivity extends AppCompatActivity {
         setSupportActionBar(toolbar);
 
         WebView webView = (WebView) findViewById(R.id.mobileApp);
-        WebViewClient theApp = new WebViewClient();
-        webView.setWebViewClient(theApp);
+        WebSettings webSettings = webView.getSettings();
+        webSettings.setJavaScriptEnabled(true);
+        WebViewClient myapp = new WebViewClient();
+        webView.setWebViewClient(myapp);
+        //setContentView(webView);
 
-        WebSettings theWeb = webView.getSettings();
-        theWeb.setJavaScriptEnabled(true);
-        setContentView(webView);
-
-        webView.loadUrl("http://wwwlab.iit.his.se/a18frilo/app/");
+        //webView.loadUrl("http://wwwlab.iit.his.se/a18frilo/app/");
         webView.loadUrl("file:///android_asset/about.html");
     }
 
